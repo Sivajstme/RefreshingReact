@@ -1,0 +1,12 @@
+.person:not(.delete){
+    width: 50%;
+    padding: 30px;
+    text-align: center;
+    border: 2px solid silver;
+    margin: 10px 20%;
+}
+.delete{
+    float: right;
+    margin: -24px -21px;
+    cursor: pointer;
+}

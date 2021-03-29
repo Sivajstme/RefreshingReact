@@ -1,5 +1,5 @@
 import React,{ useState } from "react";
-
+import './Person.css'
 
 
 const Person = (props) => {
@@ -9,11 +9,20 @@ const Person = (props) => {
         ]
         //,otherState : 'This state is not effected by Hooks'
     });
+    const [toChange, changed] = useState(false);
+    const [inputName, changedInputName] = useState('');
+    const isChange = () =>{
+        console.log('object')
+        console.log(toChange);
+        let change = toChange;
+        changed({toChange : !change});
+        console.log(toChange);
+    }
+
     //const [otherState, setOtherState] = useState('This state is not effected by Hooks')
     const changeName = () =>{
-        console.log(stateArr);
+        //console.log(stateArr);
         //console.log(otherState)
-        console.log('object')
         setSateArr({
             persons:[
                 {name:'Lollu'}
@@ -21,11 +30,34 @@ const Person = (props) => {
             //,otherState : stateArr.otherState + "Updatde "
         })
     }
+    const inputedName = (e) => {
+        //console.log(props);
+        changedInputName(e.target.value);
+
+    }
+    const sendUserUpdate = (i) =>{
+        changed({toChange : !toChange});
+        props.changeUser(i);
+    }
+
     return(
         <div className='person'>
+        
+        {/* onClick= {props.click}> */}
+            <span className='delete' onClick={props.click}>X</span>
+            <br />
             Hello.
             <br />
-            My Name is {props.name}
+            My Name is {props.name}<br/> 
+            <button onClick={isChange}> Change Name</button>
+            { toChange ?
+                <>
+                <input type='text' onChange={inputedName}></input>
+                <button onClick= {() => sendUserUpdate(inputName)}> Update User</button>
+                </>
+                :null
+
+            }
             {
                 props.name === 'James'  ? 
                 (<> 
@@ -48,8 +80,8 @@ const Person = (props) => {
                         }
                         
                     <br />
-                    <input type='text' onChange= {props.changeNameApp}/>
-            <p onClick={()=> props.click('Jam')}>____</p>
+                    {/* <input type='text' onChange= {props.changeNameApp}/> 
+            <p onClick={()=> props.click('Jam')}>____</p>*/}
         </div>
 
     );
