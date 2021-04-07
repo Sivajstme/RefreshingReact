@@ -84,14 +84,22 @@ class App extends Component {
     person.splice(i,1);
     this.setState({persons : person})
   }
+  ran = Math.random();
+
   render(){
-    
+
+    console.log(this.ran);
+    if(this.ran > 0.7){
+      throw new Error('Something is wrong!!!');
+    }
     return (
       
       <div className="App">
         <br />
         <button onClick={this.ShowHideUsers}> Switch Name </button>
+        <p>
 
+        </p> 
         {this.state.showHide ?
           <div>
               {

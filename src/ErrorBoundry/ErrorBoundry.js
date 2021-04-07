@@ -1,31 +1,27 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 
 
-class ErrorBoundry extends Component {
+class ErrorBoundary extends Component{
 
     state = {
-        hasError : false,
+        hasError: false,
         errorMessage : ''
     }
 
-    componentDidCatch = (error, info) =>{
-        this.setState({hasError:true,errorMessage: error});
+    componentDidCatch(error, info){
+            this.setState({hasError:true, errorMessage: error});
     }
-
-
-
 
     render(){
         if (this.state.hasError) {
             return(
-
-            <h1>Something Went worng!!!</h1>
-        )
+                <p>{this.state.errorMessage}</p>
+            )
         }else{
             return this.props.children;
+            
         }
-        
-    }
+}
 }
 
-export default ErrorBoundry;
+export default ErrorBoundary;
