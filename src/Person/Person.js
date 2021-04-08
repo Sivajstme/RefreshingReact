@@ -1,6 +1,6 @@
 import React,{ useState } from "react";
 import './Person.css'
-
+import ErrorBoundary from "../ErrorBoundry/ErrorBoundry";
 
 const Person = (props) => {
     const[stateArr, setSateArr] = useState({
@@ -42,8 +42,7 @@ const Person = (props) => {
 
     return(
         <div className='person'>
-        
-        {/* onClick= {props.click}> */}
+            <ErrorBoundary>
             <span className='delete' onClick={props.click}>X</span>
             <br />
             Hello.
@@ -82,6 +81,7 @@ const Person = (props) => {
                     <br />
                     {/* <input type='text' onChange= {props.changeNameApp}/> 
             <p onClick={()=> props.click('Jam')}>____</p>*/}
+            </ErrorBoundary>
         </div>
 
     );

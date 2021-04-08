@@ -8,20 +8,21 @@ class ErrorBoundary extends Component{
         errorMessage : ''
     }
 
-    componentDidCatch(error, info){
-            this.setState({hasError:true, errorMessage: error});
-    }
+    // componentDidCatch(error, info){
+    //         this.setState({hasError:true, errorMessage: error});
+    // }
 
+    static getDerivedStateFromError(error){
+        return {hasError : true,errorMessage:error}
+    }
     render(){
         if (this.state.hasError) {
             return(
                 <p>{this.state.errorMessage}</p>
             )
-        }else{
-            return this.props.children;
-            
         }
-}
+        return this.props.children;
+    }
 }
 
 export default ErrorBoundary;

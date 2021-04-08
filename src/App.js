@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import './App.css';
 import  Person from './Person/Person';
-
+import ErrorBoundary from './ErrorBoundry/ErrorBoundry';
 
 class App extends Component {
   
@@ -81,17 +81,21 @@ class App extends Component {
   }
   deletePerson = (i) => {
     let person = this.state.persons.slice();
+    if (person.length === 1) {
+      throw new Error(`Can't delete last one!!!`)
+    }else{
     person.splice(i,1);
     this.setState({persons : person})
+    }
   }
   ran = Math.random();
 
   render(){
-
+    /*
     console.log(this.ran);
     if(this.ran > 0.7){
       throw new Error('Something is wrong!!!');
-    }
+    } */
     return (
       
       <div className="App">
