@@ -5,6 +5,12 @@ import ErrorBoundary from './ErrorBoundry/ErrorBoundry';
 
 class App extends Component {
   
+  constructor(props){
+    super(props);
+    console.log('App js Constuctor');
+    
+  }
+
   state = {
     persons : [
       {
@@ -22,6 +28,12 @@ class App extends Component {
     ],
     ages : 'The ages of the persons in Class',
     showHide : false
+  }
+
+
+  static getDerivedStateFromProps(props, state){
+    console.log('App js Get Dervied State From props ',props);
+    return state;
   }
   switchNameHandler = (names) => {
     //console.log(2)
@@ -91,6 +103,7 @@ class App extends Component {
   ran = Math.random();
 
   render(){
+    console.log('App js Render');
     /*
     console.log(this.ran);
     if(this.ran > 0.7){
